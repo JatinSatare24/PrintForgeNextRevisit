@@ -34,5 +34,13 @@ export default async function CategoryPage({params, searchParams}:{
     redirect(`/3d-models/categories/${categorySlug}`)
   }
 
-  
+  return (
+    <ModelsBrowser 
+      models={models} 
+      categoryName={category.name} 
+      search={search}
+      totalPages={totalPages}
+      currentPage={page}
+    />
+  )
 }
