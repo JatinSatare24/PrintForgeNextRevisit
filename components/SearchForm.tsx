@@ -7,5 +7,16 @@ export default function SearchForm({search, startTransition}:{
   startTransition:TransitionStartFunction
 }){
 
+  const pathname = usePathname()
+  const router = useRouter()
+
+  function handleSearch(formData:FormData){
+    const search = formData.get("search")?.toString().trim() || ""
+    const url = search ? `${pathname}?search=${encodeURIComponent(search)}` : pathname 
+    startTransition(()=>{
+      router.push(url)
+    })
+    
+  }
  
 }
