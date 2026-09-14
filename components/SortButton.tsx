@@ -9,5 +9,22 @@ export default function SortButton({children, sort, startTransition}:{
   startTransition:TransitionStartFunction
 }){
 
+  const pathname = usePathname()
+  const router = useRouter() 
+  const searchParams = useSearchParams()
+
+  const isActive = searchParams.get("sort") === sort
+
+  function handleSort(){
+    const urlSearchParams = new URLSearchParams(searchParams.toString())
+    urlSearchParams.set('sort',sort)
+    urlSearchParams.delete('page')
+    const url = `${pathname}?${urlSearchParams.toString()}`
+    startTransition(()=>{ 
+      router.push(url)
+    })
+    
+  }
+
  
 }
