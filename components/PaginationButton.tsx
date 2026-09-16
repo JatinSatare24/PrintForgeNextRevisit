@@ -16,6 +16,7 @@ export default function PaginationButton({page, isActive, label}:{
     urlSearchParams.set('page', page.toString())
     const url = `${pathname}?${urlSearchParams.toString()}`
     router.push(url)
+    
   }
 
  
